@@ -28,6 +28,7 @@ export const getEmploymentLetterReport = (): TDocumentDefinitions => {
   const docDefinition: TDocumentDefinitions = {
     //* Estilos de PDF
     styles: styles,
+    //* 'pageMargins' es un array que indica los margenes de la pagina, en el orden: [izquierda, arriba, derecha, abajo].
     pageMargins: [40, 60, 40, 60], // Left, Top, Right, Bottom
     //* Header del PDF
     header: headerSection({}),

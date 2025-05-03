@@ -4,6 +4,7 @@ import { DateFormatter } from 'src/helpers';
 
 import { PrinterService } from 'src/printer/printer.service';
 import {
+  getCountriesReport,
   getEmploymentLetterByIdReport,
   getEmploymentLetterReport,
   getHelloWorldReport,
@@ -58,6 +59,29 @@ export class BasicReportsService extends PrismaClient implements OnModuleInit {
       employeeHours: employee.hours_per_day,
       employeeStartDate: DateFormatter.getDDMMMMYYYY(employee.start_date),
       employeeWorkSchedule: employee.work_schedule,
+    });
+
+    const doc = this.printerService.createPdf(docDefinition);
+
+    return doc;
+  }
+
+  async getCountries() {
+    const countries = await this.countries.findMany({
+      where: {
+        local_name: {
+          not: null,
+        },
+      },
+      orderBy: {
+        id: 'asc',
+      },
+    });
+
+    const docDefinition = getCountriesReport({
+      title: 'Countries Report',
+      subTitle: 'List of countries',
+      countries: countries,
     });
 
     const doc = this.printerService.createPdf(docDefinition);

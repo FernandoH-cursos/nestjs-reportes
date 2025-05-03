@@ -22,7 +22,7 @@ export class BasicReportsController {
   }
 
   @Get('employment-letter')
-  async employmentLetter(@Res() response: Response) {
+  employmentLetter(@Res() response: Response) {
     const pdfDoc = this.basicReportsService.employmentLetter();
 
     response.setHeader('Content-Type', 'application/pdf');
@@ -44,6 +44,18 @@ export class BasicReportsController {
     response.setHeader('Content-Type', 'application/pdf');
 
     pdfDoc.info.Title = `Employment Letter ${employeeId}`;
+
+    pdfDoc.pipe(response);
+    pdfDoc.end();
+  }
+
+  @Get('countries')
+  async getContriesReport(@Res() response: Response) {
+    const pdfDoc = await this.basicReportsService.getCountries();
+
+    response.setHeader('Content-Type', 'application/pdf');
+
+    pdfDoc.info.Title = 'Countries-Report';
 
     pdfDoc.pipe(response);
     pdfDoc.end();
