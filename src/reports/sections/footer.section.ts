@@ -5,7 +5,7 @@ export const footerSection = (
   pageCount: number,
   pageSize: ContextPageSize,
 ): Content => {
-  console.log(pageSize);
+  console.log({ pageSize });
   return {
     text: `Página ${currentPage} de ${pageCount}`,
     alignment: 'right',
