@@ -22,11 +22,13 @@
     "prisma:pull": "prisma db pull"
   },
   "dependencies": {
+    "@kurkle/color": "^0.4.0",
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "^10.0.0",
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^10.0.0",
     "@prisma/client": "^6.8.2",
+    "axios": "^1.9.0",
     "pdfmake": "^0.2.18",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1"

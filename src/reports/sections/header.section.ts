@@ -13,8 +13,8 @@ const currentDate: Content = {
   text: DateFormatter.getDDMMMMYYYY(new Date()),
   alignment: 'right',
   margin: [20, 30],
-  width: 150,
-  bold: true,
+  width: 100,
+  fontSize: 10,
 };
 
 interface HeaderOptions {
