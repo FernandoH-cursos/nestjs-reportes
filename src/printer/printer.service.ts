@@ -54,6 +54,16 @@ const customTableLayouts: Record<string, CustomTableLayout> = {
       return i % 2 === 0 ? '#f3f3f3' : null;
     },
   },
+  borderBlue: {
+    // Color de las lineas horizontales
+    hLineColor: function () {
+      return '#5f96d4';
+    },
+    // Color de las lineas verticales
+    vLineColor: function () {
+      return '#5f96d4';
+    },
+  },
 };
 
 @Injectable()

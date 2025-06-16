@@ -6,7 +6,7 @@ import { PrinterService } from 'src/printer/printer.service';
 import { getHtmlContent } from 'src/helpers';
 
 import { TDocumentDefinitions } from 'pdfmake/interfaces';
-import { footerSection, headerSection } from 'src/reports';
+import { footerSection, getCommunityReport, headerSection } from 'src/reports';
 
 @Injectable()
 export class ExtraReportsService {
@@ -33,6 +33,40 @@ export class ExtraReportsService {
     };
 
     const doc = this.printerService.createPdf(docDefinition);
+
+    return doc;
+  }
+
+  getCommunity() {
+    const docDefinition = getCommunityReport();
+
+    const doc = this.printerService.createPdf(docDefinition);
+
+    return doc;
+  }
+
+  getCustomSize() {
+    const doc = this.printerService.createPdf({
+      //* 'pageSize' permite definir el tamaño de la página de PDF
+      // pageSize: 'TABLOID',
+      pageSize: {
+        width: 150,
+        height: 300,
+      },
+      content: [
+        {
+          qr: 'https://devtalles.com',
+          fit: 100,
+          alignment: 'center',
+        },
+        {
+          text: 'Reporte con tamaño',
+          fontSize: 10,
+          alignment: 'center',
+          margin: [0, 20],
+        },
+      ],
+    });
 
     return doc;
   }
